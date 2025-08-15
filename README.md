@@ -1,6 +1,4 @@
-# SeekKrr — React + Flask + SQLite
-
-Minimal, responsive landing + interest form, following your Figma styles.
+# SeekKrr 
 
 ## Where to place static assets
 All images/SVGs live in **`frontend/src/assets/`**. Replace them with your versions if needed:
