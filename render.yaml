@@ -1,5 +1,6 @@
 services:
   # -------------------- BACKEND: Flask + SQLite --------------------
+  services:
   - type: web
     name: seekkrr-api
     env: python
@@ -8,11 +9,14 @@ services:
     startCommand: gunicorn -w 2 -k gthread -b 0.0.0.0:$PORT app:app
     envVars:
       - key: DATABASE_PATH
-        value: /data/seekkrr.db     # keep SQLite on a persistent disk
+        value: /data/seekkrr.db
+      - key: ADMIN_TOKEN
+        value: set-a-strong-random-token-here
     disk:
       name: data
       mountPath: /data
       sizeGB: 1
+
 
   # -------------------- FRONTEND: React (Vite) ---------------------
   - type: static
