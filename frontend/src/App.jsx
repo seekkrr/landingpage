@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import bg from './assets/background.jpg'
 import logo from './assets/SeekKrr logo.svg'
 import Modal from './Modal.jsx'
+const API = import.meta.env.VITE_API_BASE_URL || '';
+
 
 export default function App() {
   const [open, setOpen] = useState(false)
@@ -17,11 +19,12 @@ export default function App() {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await fetch('/api/interest', {
+      const res = await fetch(`${API}/api/interest`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
-      })
+      });
+
       if (res.ok) {
         setSubmitted(true)
         setOpen(false) // close modal on success to match your mock
