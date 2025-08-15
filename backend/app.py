@@ -5,6 +5,8 @@ import os
 from datetime import datetime
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "seekkrr.db")
+DB_PATH = os.environ.get("DATABASE_PATH", os.path.join(os.path.dirname(__file__), "seekkrr.db"))
+
 
 def init_db():
     with sqlite3.connect(DB_PATH) as conn:
