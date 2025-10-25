@@ -1236,3 +1236,594 @@ button:focus-visible {
     display: none;
   }
 }
+
+/* =========================
+   UPDATED LAYOUT STYLES
+   ========================= */
+
+/* Page Container - Full height with two sections */
+.page-container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Header Section - Plain background with logo and tagline */
+.header-section {
+  background-color: var(--color-background);
+  padding: var(--space-32) var(--space-16);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 40vh;
+}
+
+.header-content {
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+/* Large centered logo */
+.logo-large {
+  height: 80px;
+  width: auto;
+  margin-bottom: var(--space-16);
+}
+
+/* Tagline styling */
+.tagline {
+  color: var(--color-text);
+  font-size: 32px;
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-tight);
+  margin: 0;
+  padding: 0 var(--space-16);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.tagline .bold {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+/* Subtitle text */
+.subtitle-text {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-normal);
+  margin: 0;
+  padding: 0 var(--space-16);
+  max-width: 700px;
+}
+
+/* Hero Section - Background image with button at bottom */
+.hero-section {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: var(--space-32) var(--space-16);
+  min-height: 60vh;
+  position: relative;
+}
+
+/* Button container at bottom of hero section */
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: var(--space-32);
+}
+
+/* CTA Button styling */
+.cta-button {
+  width: min(403px, 90vw);
+  height: 65px;
+  border-radius: var(--radius-lg);
+  background: var(--color-cta-bg);
+  color: var(--color-cta-fg);
+  border: none;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-base);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-fast) var(--ease-standard), 
+              box-shadow var(--duration-fast) var(--ease-standard);
+  box-shadow: var(--shadow-lg);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.15),
+              0 6px 12px -3px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+/* CTA Button Disabled State - maintains same appearance as normal state */
+.cta-button:disabled {
+  background: var(--color-cta-bg);
+  color: var(--color-cta-fg);
+  cursor: not-allowed;
+  opacity: 1; /* Keep full opacity to maintain same look */
+  pointer-events: none; /* Prevent any interaction */
+}
+
+.cta-button:disabled:hover {
+  transform: none;
+  box-shadow: var(--shadow-lg); /* Keep same shadow as normal state */
+}
+
+
+/* Thank you message styling */
+.thankyou-message {
+  width: min(403px, 90vw);
+  height: 65px;
+  border-radius: var(--radius-lg);
+  background: var(--color-thanks-bg);
+  color: var(--color-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 var(--space-20);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================= 
+   RESPONSIVE BREAKPOINTS
+   ========================= */
+
+/* Mobile devices (up to 640px) */
+@media (max-width: 640px) {
+  .header-section {
+    padding: var(--space-24) var(--space-16);
+    min-height: 35vh;
+  }
+
+  .logo-large {
+    height: 60px;
+  }
+
+  .tagline {
+    font-size: 24px;
+  }
+
+  .subtitle-text {
+    font-size: var(--font-size-md);
+  }
+
+  .hero-section {
+    min-height: 65vh;
+    padding: var(--space-24) var(--space-16);
+  }
+
+  .button-container {
+    padding-bottom: var(--space-24);
+  }
+
+  .cta-button,
+  .thankyou-message {
+    font-size: var(--font-size-2xl);
+    height: 60px;
+  }
+}
+
+/* Tablet devices (641px to 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .header-section {
+    padding: var(--space-32) var(--space-24);
+    min-height: 38vh;
+  }
+
+  .logo-large {
+    height: 90px;
+  }
+
+  .tagline {
+    font-size: 36px;
+  }
+
+  .subtitle-text {
+    font-size: var(--font-size-2xl);
+  }
+
+  .hero-section {
+    min-height: 62vh;
+  }
+}
+
+/* Desktop devices (1025px and above) */
+@media (min-width: 1025px) {
+  .header-section {
+    padding: var(--space-32) var(--space-32);
+    min-height: 40vh;
+  }
+
+  .logo-large {
+    height: 110px;
+  }
+
+  .tagline {
+    font-size: 42px;
+  }
+
+  .subtitle-text {
+    font-size: 21px;
+  }
+
+  .hero-section {
+    min-height: 60vh;
+    padding: var(--space-32);
+  }
+
+  .button-container {
+    padding-bottom: 60px;
+  }
+}
+
+/* Extra large screens (1440px and above) */
+@media (min-width: 1440px) {
+  .header-content {
+    max-width: 1100px;
+  }
+
+  .logo-large {
+    height: 120px;
+  }
+
+  .tagline {
+    font-size: 48px;
+  }
+
+  .subtitle-text {
+    font-size: 24px;
+  }
+}
+
+/* Small mobile devices (max 375px) */
+@media (max-width: 375px) {
+  .header-section {
+    min-height: 30vh;
+  }
+
+  .logo-large {
+    height: 50px;
+  }
+
+  .tagline {
+    font-size: 20px;
+  }
+
+  .subtitle-text {
+    font-size: var(--font-size-sm);
+  }
+
+  .hero-section {
+    min-height: 70vh;
+  }
+
+  .cta-button,
+  .thankyou-message {
+    font-size: var(--font-size-xl);
+    height: 55px;
+  }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  .header-section {
+    min-height: 50vh;
+    padding: var(--space-16);
+  }
+
+  .logo-large {
+    height: 50px;
+  }
+
+  .tagline {
+    font-size: 24px;
+  }
+
+  .subtitle-text {
+    font-size: var(--font-size-md);
+  }
+
+  .hero-section {
+    min-height: 50vh;
+    padding: var(--space-16);
+  }
+
+  .header-content {
+    gap: var(--space-12);
+  }
+}
+
+
+/* ============================================
+   UPDATED MODAL FORM STYLES
+   ============================================ */
+
+/* Form container */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16, 16px);
+  text-align: left;
+  width: 100%;
+}
+
+/* Form title */
+.form h2 {
+  margin: 0 0 var(--space-8, 8px) 0;
+  font-size: var(--font-size-3xl, 24px);
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-primary, #000);
+  text-align: center;
+  line-height: var(--line-height-tight, 1.2);
+}
+
+/* Form group wrapper */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 6px);
+  width: 100%;
+}
+
+/* Form labels */
+.form-group label,
+.form label {
+  font-size: var(--font-size-sm, 14px);
+  font-weight: var(--font-weight-medium, 500);
+  color: var(--color-primary, #000);
+  margin-bottom: var(--space-4, 4px);
+}
+
+/* Form inputs */
+.form-group input,
+.form input {
+  width: 100%;
+  padding: var(--space-12, 12px) var(--space-16, 16px);
+  font-size: var(--font-size-base, 16px);
+  border: 1px solid var(--color-gray-300, #ccc);
+  border-radius: var(--border-radius-md, 8px);
+  background-color: var(--color-white, #fff);
+  color: var(--color-text, #000);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form input:focus {
+  outline: none;
+  border-color: var(--color-teal-500, #21808d);
+  box-shadow: 0 0 0 3px rgba(33, 128, 141, 0.1);
+}
+
+.form-group input.error,
+.form input.error {
+  border-color: var(--color-red-500, #c0152f);
+}
+
+.form-group input:disabled,
+.form input:disabled {
+  background-color: var(--color-gray-200, #f5f5f5);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Input placeholder */
+.form-group input::placeholder,
+.form input::placeholder {
+  color: var(--color-gray-400, #777c7c);
+  opacity: 1;
+}
+
+/* Error message */
+.error-message {
+  font-size: var(--font-size-xs, 12px);
+  color: var(--color-red-500, #c0152f);
+  margin-top: var(--space-4, 4px);
+}
+
+/* Form disclaimer text */
+.form-disclaimer {
+  font-size: var(--font-size-sm, 14px);
+  color: var(--color-gray-400, #777c7c);
+  text-align: center;
+  margin: var(--space-8, 8px) 0;
+  line-height: var(--line-height-normal, 1.5);
+}
+
+/* Submit button - CENTERED */
+.submit-button {
+  width: auto;
+  min-width: 120px;
+  max-width: 200px;
+  margin: var(--space-16, 16px) auto 0;
+  padding: var(--space-12, 12px) var(--space-32, 32px);
+  font-size: var(--font-size-base, 16px);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-white, #fff);
+  background-color: var(--color-black, #000);
+  border: none;
+  border-radius: var(--border-radius-full, 24px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  text-align: center;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: var(--color-charcoal-700, #1f2121);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-button:disabled {
+  background-color: var(--color-gray-300, #a7a9a9);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.submit-button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.submit-button.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid var(--color-white, #fff);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN FOR MODAL
+   ============================================ */
+
+/* Mobile devices (up to 480px) */
+@media (max-width: 480px) {
+  .modal {
+    width: 95%;
+    max-width: 95%;
+    padding: var(--space-20, 20px);
+    margin: var(--space-16, 16px);
+  }
+
+  .form h2 {
+    font-size: var(--font-size-2xl, 20px);
+  }
+
+  .form-group input,
+  .form input {
+    font-size: var(--font-size-sm, 14px);
+    padding: var(--space-10, 10px) var(--space-12, 12px);
+  }
+
+  .submit-button {
+    width: 100%;
+    max-width: 100%;
+    padding: var(--space-14, 14px) var(--space-24, 24px);
+  }
+
+  .form-disclaimer {
+    font-size: var(--font-size-xs, 12px);
+  }
+}
+
+/* Tablets (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .modal {
+    width: 90%;
+    max-width: 500px;
+    padding: var(--space-24, 24px);
+  }
+
+  .form h2 {
+    font-size: var(--font-size-2xl, 22px);
+  }
+
+  .submit-button {
+    min-width: 150px;
+  }
+}
+
+/* Desktop (769px and above) */
+@media (min-width: 769px) {
+  .modal {
+    width: 85%;
+    max-width: 580px;
+    padding: var(--space-32, 32px);
+  }
+
+  .form {
+    gap: var(--space-20, 20px);
+  }
+}
+
+/* Large desktop (1200px and above) */
+@media (min-width: 1200px) {
+  .modal {
+    max-width: 600px;
+  }
+}
+
+/* Modal backdrop responsive */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--space-16, 16px);
+  overflow-y: auto;
+}
+
+/* Ensure modal is scrollable on small screens */
+@media (max-height: 600px) {
+  .modal-backdrop {
+    align-items: flex-start;
+    padding-top: var(--space-20, 20px);
+    padding-bottom: var(--space-20, 20px);
+  }
+}
+
+
+/* ============================================
+   DISABLED BUTTON STATE FOR MAIN CTA
+   ============================================ */
+
+/* Disabled state for the main CTA button after submission */
+
+
+/* Optional: Add a subtle visual indicator that form was submitted */
+
+
+/* Alternative styling without checkmark */
+
+
+/* Ensure disabled button maintains consistent styling */
+

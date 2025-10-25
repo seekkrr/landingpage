@@ -22,12 +22,17 @@ export default function App() {
 
   const validateForm = () => {
     const newErrors = {};
+
+    // Validate email if provided
     if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
       newErrors.email = 'Please enter a valid email';
     }
+
+    // Validate phone if provided
     if (form.phone && !/^[\d\s+()-]{10,}$/.test(form.phone)) {
       newErrors.phone = 'Please enter a valid phone number';
     }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -59,75 +64,85 @@ export default function App() {
   };
 
   return (
-    <div className="page" style={{ backgroundImage: `url(${bg})` }}>
-      <header className="header">
-        <img src={logo} alt="SeekKrr" className="logo" />
-      </header>
+    <div className="page-container">
+      {/* Top Section: Logo and Tagline with Plain Background */}
+      <section className="header-section">
+        <div className="header-content">
+          <img src={logo} alt="SeekKrr" className="logo-large" />
+          <h1 className="tagline">
+            When was the last time you felt like <span className="bold">Columbus?</span>
+          </h1>
+          <p className="subtitle-text">
+            Turn every city into your playground with story-driven quests crafted by locals
+          </p>
+        </div>
+      </section>
 
-      <main className="hero">
-        <h1 className="title">
-          When was the last time you felt like <span className="bold">Columbus?</span>
-        </h1>
-        
-        <p className="subtitle">
-          Turn every city into your playground with story-driven quests crafted by locals
-        </p>
-
-        {!submitted ? (
-          <button className="cta" onClick={() => setOpen(true)}>
-            Show Interest
+      {/* Bottom Section: Background Image with Button */}
+      <section className="hero-section" style={{ backgroundImage: `url(${bg})` }}>
+        <div className="button-container">
+          <button 
+            className="cta-button" 
+            onClick={() => setOpen(true)}
+            disabled={submitted}
+          >
+            {submitted ? 'Thank you for your Support' : 'Show Interest'}
           </button>
-        ) : (
-          <div className="thankyou">
-            Thank you for your Support
-          </div>
-        )}
-      </main>
+        </div>
+      </section>
 
       <Modal open={open} onClose={() => setOpen(false)}>
         <form className="form" onSubmit={handleSubmit}>
-          <h2>Thank you for your Support</h2>
-          
-          <label>
-            Name (optional)
+          <h2 id="modal-title">Thank you for your Support</h2>
+
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
             <input
+              id="name"
               name="name"
+              type="text"
               value={form.name}
               onChange={handleChange}
-              placeholder="Your name"
+              placeholder="Enter Name"
               disabled={loading}
             />
-          </label>
+          </div>
 
-          <label>
-            Email (optional)
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
             <input
+              id="email"
               name="email"
               type="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="you@example.com"
+              placeholder="Enter Email"
               className={errors.email ? 'error' : ''}
               disabled={loading}
             />
             {errors.email && <span className="error-message">{errors.email}</span>}
-          </label>
+          </div>
 
-          <label>
-            Phone (optional)
+          <div className="form-group">
+            <label htmlFor="phone">Phone Number (optional)</label>
             <input
+              id="phone"
               name="phone"
               type="tel"
               value={form.phone}
               onChange={handleChange}
-              placeholder="+91 98765 43210"
+              placeholder="Enter Phone Number"
               className={errors.phone ? 'error' : ''}
               disabled={loading}
             />
             {errors.phone && <span className="error-message">{errors.phone}</span>}
-          </label>
+          </div>
 
-          <button className={`cta ${loading ? 'loading' : ''}`} type="submit" disabled={loading}>
+          <p className="form-disclaimer">
+            Be the first customers and get exclusive coupons. Leave your details and we will contact you.
+          </p>
+
+          <button className={`submit-button ${loading ? 'loading' : ''}`} type="submit" disabled={loading}>
             {loading ? 'Submitting…' : 'Submit'}
           </button>
         </form>
