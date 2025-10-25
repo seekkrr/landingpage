@@ -97,12 +97,6 @@ The landing page features a responsive background image that adapts to all scree
 -   **Content Preservation**: All visual elements (mountains, buildings, people) remain visible
 -   **Cross-Device Compatibility**: Consistent rendering on mobile, tablet, and desktop
 
-### Technical Implementation
-
--   Uses `background-size: 100% 100%` for full coverage without cropping
--   Implements `background-position: center` for optimal centering
--   Applied across all responsive breakpoints (mobile, tablet, desktop, large screens)
--   Prevents the common issue of top/bottom image cropping on different screen ratios
 
 ## 🧪 Testing
 
