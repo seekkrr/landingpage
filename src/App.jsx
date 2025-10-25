@@ -38,7 +38,7 @@ export default function App() {
 
     setLoading(true);
     try {
-      const res = await fetch(`${API}/api/interest`, {
+      const res = await fetch(new URL('/api/interest/', API || undefined), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
