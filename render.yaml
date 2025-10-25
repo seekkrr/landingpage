@@ -1,23 +1,4 @@
 services:
-  # -------------------- BACKEND: Flask + SQLite --------------------
-  services:
-  - type: web
-    name: seekkrr-api
-    env: python
-    rootDir: backend
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn -w 2 -k gthread -b 0.0.0.0:$PORT app:app
-    envVars:
-      - key: DATABASE_PATH
-        value: /data/seekkrr.db
-      - key: ADMIN_TOKEN
-        value: set-a-strong-random-token-here
-    disk:
-      name: data
-      mountPath: /data
-      sizeGB: 1
-
-
   # -------------------- FRONTEND: React (Vite) ---------------------
   - type: static
     name: seekkrr-frontend
@@ -27,9 +8,9 @@ services:
     # --- OPTION A: Use env var in React for API base URL
     envVars:
       - key: VITE_API_BASE_URL
-        value: https://REPLACE_WITH_API_URL   # after backend deploy, paste the seekkrr-api URL here
+        value: https://api.seekkrr.com   # after backend deploy, paste the seekkrr-api URL here
     # --- OPTION B (alternative to env var): add a rewrite for /api/*
     routes:
       - type: rewrite
         source: /api/*
-        destination: https://REPLACE_WITH_API_URL/api/:splat
+        destination: https://api.seekkrr.com /api/:splat

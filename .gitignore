@@ -1,0 +1,73 @@
+# Environment Variables
+# =====================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+# ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+# ==
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+# ====
+*.log
+logs/
+
+# Backup files
+# ============
+*.bak
+*.backup
+
+# Frontend - Node.js / Package Managers
+# =====================================
+node_modules/
+.npm/
+npm-debug.log*
+yarn-debug.log*
+yarn.error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# Frontend - Build Artifacts / Bundler Output
+# ===========================================
+# Common build output folders
+build/
+dist/
+
+# Framework-specific build output
+.next/
+.nuxt/
+out/
+.svelte-kit/
+public/build/
+.parcel-cache/
+.vite/dist/
+.vite/
+
+# Frontend - Framework Specific
+# =============================
+# Angular
+tmp/
+*.ng-template.js
+*.ng-template.ts
+*.ngsummary.js
+*.ngsummary.json
+*.ngfactory.js
+*.ngfactory.ts
+aio/
