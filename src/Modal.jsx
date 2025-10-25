@@ -21,7 +21,7 @@ export default function Modal({ open, onClose, children }) {
     };
 
     document.addEventListener('keydown', handleEscape);
-    
+
     // Prevent body scroll when modal is open
     document.body.style.overflow = 'hidden';
 
