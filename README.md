@@ -12,26 +12,6 @@ A production-ready landing page for SeekKrr - Turn every city into your playgrou
 - **Backend Integration**: Flask API with SQLite database
 - **Admin Dashboard**: CSV export and statistics endpoints
 
-## 📁 Project Structure
-
-```
-seekkrr-landing/
-├── public/
-│   └── assets/
-│       ├── background.jpg
-│       ├── SeekKrr logo.svg
-│       └── cancel.svg
-├── src/
-│   ├── App.jsx          # Main application component
-│   ├── Modal.jsx        # Reusable modal component
-│   ├── main.jsx         # Application entry point
-│   └── styles.css       # Global styles with design system
-├── app.py               # Flask backend API
-├── index.html           # HTML entry point
-├── package.json         # Dependencies
-├── vite.config.js       # Vite configuration
-└── README.md           # This file
-```
 
 ## 🛠️ Tech Stack
 
@@ -40,16 +20,10 @@ seekkrr-landing/
 - **Vite** - Build tool and dev server
 - **CSS3** - Modern styling with custom properties
 
-### Backend
-- **Flask** - Python web framework
-- **SQLite** - Database
-- **Flask-CORS** - Cross-origin resource sharing
-
 ## 📦 Installation
 
 ### Prerequisites
 - Node.js (v16 or higher)
-- Python (v3.8 or higher)
 - npm or yarn
 
 ### Frontend Setup
@@ -65,33 +39,11 @@ echo "VITE_API_BASE_URL=http://localhost:5000" > .env
 npm run dev
 ```
 
-### Backend Setup
-
-```bash
-# Install Python dependencies
-pip install flask flask-cors
-
-# Run the Flask server
-python app.py
-```
-
-The application will be available at:
-- Frontend: http://localhost:5173
-- Backend: http://localhost:5000
-
 ## 🔧 Environment Variables
 
 ### Frontend (.env)
 ```
 VITE_API_BASE_URL=http://localhost:5000
-```
-
-### Backend
-```
-DATABASE_PATH=/path/to/seekkrr.db  # Optional, defaults to ./seekkrr.db
-ADMIN_TOKEN=your-secret-token      # Required for admin endpoints
-FLASK_ENV=development              # development or production
-PORT=5000                          # Server port
 ```
 
 ## 📱 Responsive Design
@@ -125,67 +77,6 @@ Responsive features:
 ### Spacing
 Uses a consistent 8px grid system with CSS custom properties.
 
-## 🔌 API Endpoints
-
-### Public Endpoints
-
-#### POST /api/interest
-Submit interest form
-```json
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "phone": "+91 98765 43210"
-}
-```
-
-#### GET /api/health
-Health check endpoint
-
-### Admin Endpoints (require ADMIN_TOKEN)
-
-#### GET /api/admin/export?token=YOUR_TOKEN
-Export all interests as CSV
-
-Query parameters:
-- `token` (required): Admin authentication token
-- `from` (optional): Start date (YYYY-MM-DD)
-- `to` (optional): End date (YYYY-MM-DD)
-
-#### GET /api/stats?token=YOUR_TOKEN
-Get statistics about submissions
-
-## 🚀 Deployment
-
-### Frontend (Vercel/Netlify)
-
-1. Build the project:
-```bash
-npm run build
-```
-
-2. Deploy the `dist` folder
-
-3. Set environment variable:
-```
-VITE_API_BASE_URL=https://your-api-domain.com
-```
-
-### Backend (Render/Railway/Heroku)
-
-1. Add `requirements.txt`:
-```
-flask
-flask-cors
-```
-
-2. Set environment variables:
-```
-ADMIN_TOKEN=your-secure-token
-DATABASE_PATH=/opt/render/project/db/seekkrr.db
-```
-
-3. Deploy using platform-specific instructions
 
 ## 🧪 Testing
 
