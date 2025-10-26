@@ -11,6 +11,7 @@ A production-ready landing page for SeekKrr - Turn every city into your playgrou
 -   **Form Validation**: Client-side validation with user-friendly error messages
 -   **Backend Integration**: Flask API with SQLite database
 -   **Admin Dashboard**: CSV export and statistics endpoints
+-   **Responsive Background Images**: Optimized background image rendering across all screen resolutions
 
 ## 🛠️ Tech Stack
 
@@ -63,6 +64,8 @@ Responsive features:
 -   Touch-friendly button sizes
 -   Optimized images for different screen sizes
 -   Dynamic viewport height (dvh) for mobile browsers
+-   Responsive background image stretching to prevent cropping
+-   Consistent background positioning across all breakpoints
 
 ## 🎨 Design System
 
@@ -83,6 +86,18 @@ Responsive features:
 
 Uses a consistent 8px grid system with CSS custom properties.
 
+## 🖼️ Background Image Optimization
+
+The landing page features a responsive background image that adapts to all screen sizes without cropping:
+
+### Background Image Features
+
+-   **No Cropping**: Image stretches to fill entire container without losing content
+-   **Responsive Positioning**: Optimized positioning across all breakpoints
+-   **Content Preservation**: All visual elements (mountains, buildings, people) remain visible
+-   **Cross-Device Compatibility**: Consistent rendering on mobile, tablet, and desktop
+
+
 ## 🧪 Testing
 
 ### Manual Testing Checklist
@@ -94,6 +109,8 @@ Uses a consistent 8px grid system with CSS custom properties.
 -   [ ] Error handling (network errors)
 -   [ ] Responsive design on all devices
 -   [ ] Cross-browser compatibility
+-   [ ] Background image displays correctly on all screen sizes
+-   [ ] No image cropping on different aspect ratios
 
 ## 🔐 Security Considerations
 

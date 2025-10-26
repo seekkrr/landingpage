@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import bg from './assets/background.jpg';
 import logo from './assets/seekkrr-logo.svg';
 import Modal from './Modal.jsx';
@@ -12,49 +12,147 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
+  // Refs to focus invalid fields
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const phoneRef = useRef(null);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
+    setForm((prev) => ({ ...prev, [name]: value }));
+
+    // clear per-field error as user types
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: '' }));
+    }
+
+    // if user fills either email/phone, clear the global contact error
+    if ((name === 'email' && value) || (name === 'phone' && value)) {
+      setErrors((prev) => ({ ...prev, contact: '' }));
     }
   };
 
+  const focusFirstError = (errObj) => {
+    if (errObj.name) {
+      nameRef.current?.focus();
+    } else if (errObj.email) {
+      emailRef.current?.focus();
+    } else if (errObj.phone) {
+      phoneRef.current?.focus();
+    } else if (errObj.contact) {
+      // if contact missing, focus email if empty else phone
+      if (!form.email || !form.email.trim()) {
+        emailRef.current?.focus();
+      } else {
+        phoneRef.current?.focus();
+      }
+    }
+  };
+
+  /**
+   * Validate form and return an object with errors.
+   * Also sets the errors state.
+   * - name required
+   * - one of email/phone required
+   * - email format if provided
+   * - phone: allow formatted phone (spaces, -, parentheses, leading +),
+   *   but require digit count (10-15)
+   */
   const validateForm = () => {
     const newErrors = {};
 
-    // Validate email if provided
-    if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      newErrors.email = 'Please enter a valid email';
+    // Name required
+    if (!form.name || !form.name.trim()) {
+      newErrors.name = 'Please enter your name.';
+    } else if (form.name.trim().length > 100) {
+      newErrors.name = 'Name is too long.';
     }
 
-    // Validate phone if provided
-    if (form.phone && !/^[\d\s+()-]{10,}$/.test(form.phone)) {
-      newErrors.phone = 'Please enter a valid phone number';
+    // At least one contact method required
+    const hasEmail = Boolean(form.email && form.email.trim());
+    const hasPhone = Boolean(form.phone && form.phone.trim());
+
+    if (!hasEmail && !hasPhone) {
+      newErrors.contact = 'Please provide either an email address or a phone number.';
+    }
+
+    // Email validation (if provided)
+    if (hasEmail) {
+      const email = form.email.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        newErrors.email = 'Please enter a valid email address.';
+      } else if (email.length > 254) {
+        newErrors.email = 'Email is too long.';
+      }
+    }
+
+    // Phone validation (if provided)
+    if (hasPhone) {
+      const rawPhone = form.phone.trim();
+      // allow digits, spaces, +, -, parentheses
+      const phoneCharsValid = /^\+?[\d\s()+-]+$/.test(rawPhone);
+      const digitsOnly = rawPhone.replace(/\D/g, '');
+      if (!phoneCharsValid) {
+        newErrors.phone = 'Phone number can contain only digits, spaces, +, - and parentheses.';
+      } else if (digitsOnly.length < 10) {
+        newErrors.phone = 'Please enter a valid phone number (at least 10 digits).';
+      } else if (digitsOnly.length > 15) {
+        newErrors.phone = 'Phone number appears too long.';
+      }
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return newErrors;
+  };
+
+  const normalizePhone = (phone) => {
+    if (typeof phone !== 'string') return '';
+    const trimmed = phone.trim();
+    if (!trimmed) return '';
+    if (trimmed.startsWith('+')) {
+      return '+' + trimmed.slice(1).replace(/\D/g, '');
+    }
+    return trimmed.replace(/\D/g, '');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
 
+    // Validate first — keep modal open and focus first invalid field if any.
+    const newErrors = validateForm();
+    if (Object.keys(newErrors).length > 0) {
+      // focus first invalid field immediately
+      focusFirstError(newErrors);
+      return;
+    }
+
+    // If valid, proceed to submit
     setLoading(true);
     try {
+      const payload = {
+        ...form,
+        phone: normalizePhone(form.phone),
+      };
       const res = await fetch(new URL('/api/interest/', API || undefined), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
 
       if (res.ok) {
         setSubmitted(true);
         setOpen(false);
         setForm({ name: '', email: '', phone: '' });
+        setErrors({});
       } else {
-        alert('Something went wrong. Please try again.');
+        // try to read server error message
+        let msg = 'Something went wrong. Please try again.';
+        try {
+          const body = await res.json();
+          if (body && body.message) msg = body.message;
+        } catch (_) {}
+        alert(msg);
       }
     } catch (err) {
       alert('Network error. Please check your connection.');
@@ -79,11 +177,18 @@ export default function App() {
       </section>
 
       {/* Bottom Section: Background Image with Button */}
-      <section className="hero-section" style={{ backgroundImage: `url(${bg})` }}>
+      <section
+        className="hero-section"
+        style={{ backgroundImage: `url(${bg})` }}
+      >
         <div className="button-container">
-          <button 
-            className="cta-button" 
-            onClick={() => setOpen(true)}
+          <button
+            className="cta-button"
+            onClick={() => {
+              setOpen(true);
+              // clear prior errors when reopening
+              setErrors({});
+            }}
             disabled={submitted}
           >
             {submitted ? 'Thank you for your Support' : 'Show Interest'}
@@ -92,7 +197,7 @@ export default function App() {
       </section>
 
       <Modal open={open} onClose={() => setOpen(false)}>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit} noValidate>
           <h2 id="modal-title">Thank you for your Support</h2>
 
           <div className="form-group">
@@ -101,11 +206,19 @@ export default function App() {
               id="name"
               name="name"
               type="text"
+              ref={nameRef}
               value={form.name}
               onChange={handleChange}
               placeholder="Enter Name"
               disabled={loading}
+              aria-invalid={errors.name ? 'true' : 'false'}
+              aria-describedby={errors.name ? 'err-name' : undefined}
             />
+            {errors.name && (
+              <span className="error-message" id="err-name" role="alert">
+                {errors.name}
+              </span>
+            )}
           </div>
 
           <div className="form-group">
@@ -114,35 +227,63 @@ export default function App() {
               id="email"
               name="email"
               type="email"
+              ref={emailRef}
               value={form.email}
               onChange={handleChange}
               placeholder="Enter Email"
               className={errors.email ? 'error' : ''}
               disabled={loading}
+              aria-invalid={errors.email ? 'true' : 'false'}
+              aria-describedby={errors.email ? 'err-email' : undefined}
             />
-            {errors.email && <span className="error-message">{errors.email}</span>}
+            {errors.email && (
+              <span className="error-message" id="err-email" role="alert">
+                {errors.email}
+              </span>
+            )}
           </div>
 
           <div className="form-group">
-            <label htmlFor="phone">Phone Number (optional)</label>
+            <label htmlFor="phone">Phone Number</label>
             <input
               id="phone"
               name="phone"
               type="tel"
+              ref={phoneRef}
               value={form.phone}
               onChange={handleChange}
               placeholder="Enter Phone Number"
               className={errors.phone ? 'error' : ''}
               disabled={loading}
+              aria-invalid={errors.phone ? 'true' : 'false'}
+              aria-describedby={errors.phone ? 'err-phone' : undefined}
             />
-            {errors.phone && <span className="error-message">{errors.phone}</span>}
+            {errors.phone && (
+              <span className="error-message" id="err-phone" role="alert">
+                {errors.phone}
+              </span>
+            )}
           </div>
+
+          {/* Global contact error (either email or phone required) */}
+          {errors.contact && (
+            <div className="form-group">
+              <span className="error-message" role="alert" id="err-contact">
+                {errors.contact}
+              </span>
+            </div>
+          )}
 
           <p className="form-disclaimer">
             Be the first customers and get exclusive coupons. Leave your details and we will contact you.
           </p>
 
-          <button className={`submit-button ${loading ? 'loading' : ''}`} type="submit" disabled={loading}>
+          <button
+            className={`submit-button ${loading ? 'loading' : ''}`}
+            type="submit"
+            disabled={loading}
+            aria-busy={loading ? 'true' : 'false'}
+          >
             {loading ? 'Submitting…' : 'Submit'}
           </button>
         </form>
