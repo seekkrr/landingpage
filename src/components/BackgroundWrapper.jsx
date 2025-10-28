@@ -28,7 +28,7 @@ export default function BackgroundWrapper({
 
     const scaleX = cw / iw;
     const scaleY = ch / ih;
-    const distortion = Math.abs(scaleX / scaleY - 1);
+    const distortion = Math.abs(scaleX / (scaleY === 0 ? 1e-9 : scaleY) - 1);
 
     if (distortion <= threshold) {
       setMode('stretch');
