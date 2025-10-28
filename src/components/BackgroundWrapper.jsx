@@ -44,6 +44,7 @@ export default function BackgroundWrapper({
     const img = new Image();
     img.onload = () => {
       if (cancelled) return;
+      if (cancelled || intrinsicRef.current.width > 0) return;
       intrinsicRef.current = { width: img.naturalWidth || img.width, height: img.naturalHeight || img.height };
       recalc();
     };
