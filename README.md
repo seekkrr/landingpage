@@ -86,6 +86,7 @@ Responsive features:
 
 Uses a consistent 8px grid system with CSS custom properties.
 
+
 ## 🖼️ Background Image Optimization
 
 The landing page features a responsive background image that adapts to all screen sizes without cropping:
@@ -96,6 +97,13 @@ The landing page features a responsive background image that adapts to all scree
 -   **Responsive Positioning**: Optimized positioning across all breakpoints
 -   **Content Preservation**: All visual elements (mountains, buildings, people) remain visible
 -   **Cross-Device Compatibility**: Consistent rendering on mobile, tablet, and desktop
+
+
+### Background Aspect Ratio Policy (PR 1)
+
+Background images now maintain a ~10% stretch threshold to preserve aspect ratio. When more distortion would be required, the image is centered using contain and remaining space is white.
+
+To adjust behavior, see `src/styles/background.css` or `src/components/BackgroundWrapper.jsx`.
 
 
 ## 🧪 Testing

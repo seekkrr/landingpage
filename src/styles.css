@@ -1326,7 +1326,7 @@ button:focus-visible {
 /* Hero Section - Background image with button at bottom */
 .hero-section {
     flex: 1;
-    background-size: 100% 100%;
+    /* background is now handled by BackgroundWrapper */
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
@@ -1433,8 +1433,7 @@ button:focus-visible {
     .hero-section {
         min-height: 65vh;
         padding: var(--space-24) var(--space-16);
-        background-size: 100% 100%;
-        background-position: center;
+        /* background handled by BackgroundWrapper */
     }
 
     .button-container {
@@ -1469,8 +1468,7 @@ button:focus-visible {
 
     .hero-section {
         min-height: 62vh;
-        background-size: 100% 100%;
-        background-position: center;
+        /* background handled by BackgroundWrapper */
     }
 }
 
@@ -1496,8 +1494,7 @@ button:focus-visible {
     .hero-section {
         min-height: 60vh;
         padding: var(--space-32);
-        background-size: 100% 100%;
-        background-position: center;
+        /* background handled by BackgroundWrapper */
     }
 
     .button-container {
@@ -1577,8 +1574,7 @@ button:focus-visible {
     .hero-section {
         min-height: 50vh;
         padding: var(--space-16);
-        background-size: 100% 100%;
-        background-position: center;
+        /* background handled by BackgroundWrapper */
     }
 
     .header-content {

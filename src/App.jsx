@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import bg from './assets/background.jpg';
 import logo from './assets/seekkrr-logo.svg';
 import Modal from './Modal.jsx';
+import BackgroundWrapper from './components/BackgroundWrapper.jsx';
+import './styles/background.css';
 
 const API = import.meta.env.VITE_API_BASE_URL || '';
 
@@ -177,16 +179,12 @@ export default function App() {
       </section>
 
       {/* Bottom Section: Background Image with Button */}
-      <section
-        className="hero-section"
-        style={{ backgroundImage: `url(${bg})` }}
-      >
+      <BackgroundWrapper src={bg} threshold={0.1} className="hero-section">
         <div className="button-container">
           <button
             className="cta-button"
             onClick={() => {
               setOpen(true);
-              // clear prior errors when reopening
               setErrors({});
             }}
             disabled={submitted}
@@ -194,7 +192,7 @@ export default function App() {
             {submitted ? 'Thank you for your Support' : 'Show Interest'}
           </button>
         </div>
-      </section>
+      </BackgroundWrapper>
 
       <Modal open={open} onClose={() => setOpen(false)}>
         <form className="form" onSubmit={handleSubmit} noValidate>
