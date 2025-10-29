@@ -28,7 +28,7 @@ export default function BackgroundWrapper({
 
     const scaleX = cw / iw;
     const scaleY = ch / ih;
-    const distortion = Math.abs(scaleX / scaleY - 1);
+    const distortion = Math.abs(scaleX / (scaleY === 0 ? 1e-9 : scaleY) - 1);
 
     if (distortion <= threshold) {
       setMode('stretch');
@@ -44,6 +44,7 @@ export default function BackgroundWrapper({
     const img = new Image();
     img.onload = () => {
       if (cancelled) return;
+      if (cancelled || intrinsicRef.current.width > 0) return;
       intrinsicRef.current = { width: img.naturalWidth || img.width, height: img.naturalHeight || img.height };
       recalc();
     };
