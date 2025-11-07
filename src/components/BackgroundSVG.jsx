@@ -22,10 +22,11 @@ const BackgroundSVG = ({ orientation = "landscape", onLoad = () => {} }) => {
         onLoad();
     }, [onLoad]);
 
-    const handleError = React.useCallback((err) => {
-        setError(err);
+    const handleError = React.useCallback((e) => {
+        const url = e?.target?.data;
+        setError(`Failed to load SVG: ${url || 'Unknown'}`);
         setIsLoaded(false);
-        console.error("Background SVG failed to load:", err);
+        console.error(`Background SVG failed to load: ${url}`);
     }, []);
 
     if (error) {
