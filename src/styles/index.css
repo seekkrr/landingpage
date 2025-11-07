@@ -307,7 +307,7 @@ body {
         --heading-vw: 50vw;
         --body-vw: 36vw;
 
-        --cta-bottom: 42px;
+        --cta-bottom: 32px;
         --cta-padding: 16px 40px;
         --cta-font-size: 18px;
     }
@@ -335,7 +335,7 @@ body {
         --heading-vw: 78vw;
         --body-vw: 82vw;
 
-        --cta-bottom: 56px;
+        --cta-bottom: 36px;
         --cta-padding: 14px 28px;
         --cta-font-size: 16px;
     }
