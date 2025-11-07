@@ -1,0 +1,867 @@
+:root {
+    /* =============================
+    Option B — Desktop defaults
+    ============================= */
+    --hero-left-margin: 96px;
+    /* left edge for heading/body on desktop */
+    --hero-right-margin: 48px;
+    /* right edge clamp */
+    --hero-logo-top: 28px;
+    /* top offset for the logo */
+    --hero-heading-top: 120px;
+    /* baseline top for heading */
+    --hero-body-top: 164px;
+    /* baseline top for body */
+    --gap-after-logo: 28px;
+    /* vertical gap between logo and heading */
+    --gap-after-heading: 20px;
+    /* vertical gap between heading and body */
+
+    /* Max widths for intrinsic assets */
+    --logo-max-px: 460px;
+    --heading-max-px: 980px;
+    --body-max-px: 640px;
+
+    /* CTA/button variables */
+    --cta-bottom: 36px;
+    --cta-bg: #000000;
+    --cta-color: #ffffff;
+    --cta-padding: 20px 56px;
+    --cta-font-size: 22px;
+    --cta-radius: 28px;
+
+    /* Responsive behavior for SVG overlays */
+    --logo-scale: 0.86;
+    /* multiply vw-based size by this to reduce/increase logo */
+    --logo-min-px: 180px;
+
+    --heading-vw: 44vw;
+    /* preferred viewport-based size for heading */
+    --heading-min-px: 360px;
+
+    --body-vw: 32vw;
+    /* preferred viewport-based size for body */
+    --body-min-px: 300px;
+
+    /* colors & helper typography vars */
+    --heading-color: #0d4f49;
+    --body-color: #6b6b6b;
+
+    /* motion */
+    --focus-ring: 0 0 0 3px rgba(0, 0, 0, 0.15), 0 0 0 6px rgba(0, 0, 0, 0.08);
+
+        /* Primitive Color Tokens */
+    --color-white: rgba(255, 255, 255, 1);
+    --color-black: rgba(0, 0, 0, 1);
+    --color-cream-50: rgba(252, 252, 249, 1);
+    --color-cream-100: rgba(255, 255, 253, 1);
+    --color-gray-200: rgba(245, 245, 245, 1);
+    --color-gray-300: rgba(167, 169, 169, 1);
+    --color-gray-400: rgba(119, 124, 124, 1);
+    --color-slate-500: rgba(98, 108, 113, 1);
+    --color-brown-600: rgba(94, 82, 64, 1);
+    --color-charcoal-700: rgba(31, 33, 33, 1);
+    --color-charcoal-800: rgba(38, 40, 40, 1);
+    --color-slate-900: rgba(19, 52, 59, 1);
+    --color-teal-300: rgba(50, 184, 198, 1);
+    --color-teal-400: rgba(45, 166, 178, 1);
+    --color-teal-500: rgba(33, 128, 141, 1);
+    --color-teal-600: rgba(29, 116, 128, 1);
+    --color-teal-700: rgba(26, 104, 115, 1);
+    --color-teal-800: rgba(41, 150, 161, 1);
+    --color-red-400: rgba(255, 84, 89, 1);
+    --color-red-500: rgba(192, 21, 47, 1);
+    --color-orange-400: rgba(230, 129, 97, 1);
+    --color-orange-500: rgba(168, 75, 47, 1);
+
+    /* RGB versions for opacity control */
+    --color-brown-600-rgb: 94, 82, 64;
+    --color-teal-500-rgb: 33, 128, 141;
+    --color-slate-900-rgb: 19, 52, 59;
+    --color-slate-500-rgb: 98, 108, 113;
+    --color-red-500-rgb: 192, 21, 47;
+    --color-red-400-rgb: 255, 84, 89;
+    --color-orange-500-rgb: 168, 75, 47;
+    --color-orange-400-rgb: 230, 129, 97;
+
+    /* Background color tokens (Light Mode) */
+    --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
+    --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
+    --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
+    --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
+    --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
+    --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
+    --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
+    --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
+
+    /* Semantic Color Tokens (Light Mode) */
+    --color-background: var(--color-white);
+    --color-surface: var(--color-cream-100);
+    --color-text: var(--color-slate-900);
+    --color-text-secondary: var(--color-slate-500);
+    --color-primary: var(--color-teal-500);
+    --color-primary-hover: var(--color-teal-600);
+    --color-primary-active: var(--color-teal-700);
+    --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+    --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+    --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+    --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+    --color-btn-primary-text: var(--color-cream-50);
+    --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+    --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+    --color-error: var(--color-red-500);
+    --color-success: var(--color-teal-500);
+    --color-warning: var(--color-orange-500);
+    --color-info: var(--color-slate-500);
+    --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+    --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+    /* Common style patterns */
+    --focus-ring: 0 0 0 3px var(--color-focus-ring);
+    --focus-outline: 2px solid var(--color-primary);
+    --status-bg-opacity: 0.15;
+    --status-border-opacity: 0.25;
+    --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+    /* RGB versions for opacity control */
+    --color-success-rgb: 33, 128, 141;
+    --color-error-rgb: 192, 21, 47;
+    --color-warning-rgb: 168, 75, 47;
+    --color-info-rgb: 98, 108, 113;
+
+    /* Typography */
+    --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+        BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+        Monaco, Consolas, monospace;
+    --font-size-xs: 11px;
+    --font-size-sm: 12px;
+    --font-size-base: 14px;
+    --font-size-md: 14px;
+    --font-size-lg: 16px;
+    --font-size-xl: 18px;
+    --font-size-2xl: 20px;
+    --font-size-3xl: 24px;
+    --font-size-4xl: 30px;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 550;
+    --font-weight-bold: 600;
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.5;
+    --letter-spacing-tight: -0.01em;
+
+    /* Spacing */
+    --space-0: 0;
+    --space-1: 1px;
+    --space-2: 2px;
+    --space-4: 4px;
+    --space-6: 6px;
+    --space-8: 8px;
+    --space-10: 10px;
+    --space-12: 12px;
+    --space-16: 16px;
+    --space-20: 20px;
+    --space-24: 24px;
+    --space-32: 32px;
+
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-base: 8px;
+    --radius-md: 10px;
+    --radius-lg: 12px;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+        0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+        0 4px 6px -2px rgba(0, 0, 0, 0.02);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+    /* Animation */
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Layout */
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1280px;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background: #fff;
+}
+
+body {
+    overflow: hidden;
+}
+
+.main-container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    contain: layout style size;
+}
+
+/* Background SVG scales independently; no manual gradient added */
+.background-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Canvas layer for logo/heading/body */
+.canvas-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    backface-visibility: hidden;
+    will-change: contents;
+}
+
+#mainCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* CTA button */
+.overlay-cta {
+    position: absolute;
+    left: 50%;
+    bottom: var(--cta-bottom);
+    transform: translateX(-50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.cta {
+    pointer-events: auto;
+    background: var(--cta-bg);
+    color: var(--cta-color);
+    padding: var(--cta-padding);
+    border-radius: var(--cta-radius);
+    border: none;
+    font-weight: 700;
+    font-size: var(--cta-font-size);
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+
+.cta:hover,
+.cta:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+.cta:focus-visible {
+    box-shadow: var(--focus-ring);
+}
+
+.content {
+    display: none;
+}
+
+/* =============================
+       Option B — Tablet (600–1024)
+       ============================= */
+@media (min-width: 600px) and (max-width: 1024px) {
+    :root {
+        --hero-left-margin: 48px;
+        --hero-right-margin: 32px;
+
+        --hero-logo-top: 22px;
+        --hero-heading-top: 100px;
+        --hero-body-top: 140px;
+
+        --gap-after-logo: 24px;
+        --gap-after-heading: 18px;
+
+        --logo-max-px: 380px;
+        --heading-max-px: 760px;
+        --body-max-px: 520px;
+
+        --heading-vw: 50vw;
+        --body-vw: 36vw;
+
+        --cta-bottom: 42px;
+        --cta-padding: 16px 40px;
+        --cta-font-size: 18px;
+    }
+}
+
+/* =============================
+       Option B — Mobile (<600)
+       ============================= */
+@media (max-width: 599.98px) {
+    :root {
+        --hero-left-margin: 16px;
+        --hero-right-margin: 16px;
+
+        --hero-logo-top: 16px;
+        --hero-heading-top: 84px;
+        --hero-body-top: 120px;
+
+        --gap-after-logo: 18px;
+        --gap-after-heading: 16px;
+
+        --logo-max-px: 260px;
+        --heading-max-px: 520px;
+        --body-max-px: 380px;
+
+        --heading-vw: 78vw;
+        --body-vw: 82vw;
+
+        --cta-bottom: 56px;
+        --cta-padding: 14px 28px;
+        --cta-font-size: 16px;
+    }
+}
+
+/* Center heading + body for mobile portrait */
+@media (max-width: 599.98px) and (orientation: portrait) {
+    :root {
+        --center-mobile: 1;
+        /* flag used in JS */
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cta {
+        transition: none;
+    }
+}
+
+/* Form elements */
+.form-control {
+    display: block;
+    width: 100%;
+    padding: var(--space-8) var(--space-12);
+    font-size: var(--font-size-md);
+    line-height: 1.5;
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-base);
+    transition: border-color var(--duration-fast) var(--ease-standard),
+        box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+textarea.form-control {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+}
+
+select.form-control {
+    padding: var(--space-8) var(--space-12);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: var(--select-caret-light);
+    background-repeat: no-repeat;
+    background-position: right var(--space-12) center;
+    background-size: 16px;
+    padding-right: var(--space-32);
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    outline: var(--focus-outline);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--space-8);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+}
+
+.form-group {
+    margin-bottom: var(--space-16);
+}
+
+:focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: 2px;
+}
+
+/* Modal Backdrop */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: var(--color-modal-backdrop);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-16);
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+    animation: fadeIn var(--duration-fast) var(--ease-standard);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal Container */
+.modal {
+    position: relative;
+    width: min(608px, 95vw);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-32);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-card-border);
+    animation: slideUp var(--duration-normal) var(--ease-standard);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal Close Button */
+.modal-close {
+    position: absolute;
+    top: var(--space-12);
+    right: var(--space-12);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-8);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    transition: background var(--duration-fast) var(--ease-standard);
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: var(--color-secondary);
+}
+
+.modal-close:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}
+
+.modal-close img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Form Styling */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    text-align: left;
+}
+
+.form h2 {
+    margin: 0 0 var(--space-8) 0;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    text-align: center;
+    line-height: var(--line-height-tight);
+}
+
+.form label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.form input {
+    height: 48px;
+    border: 2px solid var(--color-input-border);
+    border-radius: var(--radius-md);
+    padding: 0 var(--space-16);
+    font-size: var(--font-size-lg);
+    font-family: var(--font-family-base);
+    transition: all var(--duration-fast) var(--ease-standard);
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
+.form input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.7;
+}
+
+.form input:focus {
+    outline: none;
+    border-color: var(--color-input-focus);
+    box-shadow: var(--focus-ring);
+}
+
+.form input.error {
+    border-color: var(--color-error);
+}
+
+.form .error-message {
+    color: var(--color-error);
+    font-size: var(--font-size-xs);
+    margin-top: calc(var(--space-4) * -1);
+    font-weight: var(--font-weight-normal);
+}
+
+/* Loading State */
+.cta.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.cta.loading::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-full);
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+    .modal {
+        padding: var(--space-24);
+        border-radius: var(--radius-base);
+    }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .modal {
+        padding: var(--space-32);
+    }
+}
+
+/* Very Small Screens */
+@media (max-width: 320px) {
+    .modal {
+        padding: var(--space-20);
+        border-radius: var(--radius-base);
+    }
+}
+
+/* Landscape Mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    .modal {
+        max-height: 95vh;
+    }
+}
+
+/* Accessibility */
+:focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+    .modal-backdrop,
+    .cta {
+        display: none;
+    }
+}
+
+/* ============================================
+   UPDATED MODAL FORM STYLES
+   ============================================ */
+
+/* Form container */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16, 16px);
+    text-align: left;
+    width: 100%;
+}
+
+/* Form title */
+.form h2 {
+    margin: 0 0 var(--space-8, 8px) 0;
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-primary, #000);
+    text-align: center;
+    line-height: var(--line-height-tight, 1.2);
+}
+
+/* Form group wrapper */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6, 6px);
+    width: 100%;
+}
+
+/* Form labels */
+.form-group label,
+.form label {
+    font-size: var(--font-size-sm, 14px);
+    font-weight: var(--font-weight-medium, 500);
+    color: var(--color-primary, #000);
+    margin-bottom: var(--space-4, 4px);
+}
+
+/* Form inputs */
+.form-group input,
+.form input {
+    width: 100%;
+    padding: var(--space-12, 12px) var(--space-16, 16px);
+    font-size: var(--font-size-base, 16px);
+    border: 1px solid var(--color-gray-300, #ccc);
+    border-radius: var(--border-radius-md, 8px);
+    background-color: var(--color-white, #fff);
+    color: var(--color-text, #000);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form input:focus {
+    outline: none;
+    border-color: var(--color-teal-500, #21808d);
+    box-shadow: 0 0 0 3px rgba(33, 128, 141, 0.1);
+}
+
+.form-group input.error,
+.form input.error {
+    border-color: var(--color-red-500, #c0152f);
+}
+
+.form-group input:disabled,
+.form input:disabled {
+    background-color: var(--color-gray-200, #f5f5f5);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Input placeholder */
+.form-group input::placeholder,
+.form input::placeholder {
+    color: var(--color-gray-400, #777c7c);
+    opacity: 1;
+}
+
+/* Error message */
+.error-message {
+    font-size: var(--font-size-xs, 12px);
+    color: var(--color-red-500, #c0152f);
+    margin-top: var(--space-4, 4px);
+}
+
+/* Form disclaimer text */
+.form-disclaimer {
+    font-size: var(--font-size-sm, 14px);
+    color: var(--color-gray-400, #777c7c);
+    text-align: center;
+    margin: var(--space-8, 8px) 0;
+    line-height: var(--line-height-normal, 1.5);
+}
+
+/* Submit button - CENTERED */
+.submit-button {
+    width: auto;
+    min-width: 120px;
+    max-width: 200px;
+    margin: var(--space-16, 16px) auto 0;
+    padding: var(--space-12, 12px) var(--space-32, 32px);
+    font-size: var(--font-size-base, 16px);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--color-white, #fff);
+    background-color: var(--color-black, #000);
+    border: none;
+    border-radius: var(--border-radius-full, 24px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    text-align: center;
+}
+
+.submit-button:hover:not(:disabled) {
+    background-color: var(--color-charcoal-700, #1f2121);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submit-button:disabled {
+    background-color: var(--color-gray-300, #a7a9a9);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.submit-button.loading {
+    position: relative;
+    color: transparent;
+}
+
+.submit-button.loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid var(--color-white, #fff);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN FOR MODAL
+   ============================================ */
+
+/* Mobile devices (up to 480px) */
+@media (max-width: 480px) {
+    .modal {
+        width: 95%;
+        max-width: 95%;
+        padding: var(--space-20, 20px);
+        margin: var(--space-16, 16px);
+    }
+
+    .form-group input,
+    .form input {
+        font-size: var(--font-size-sm, 14px);
+        padding: var(--space-10, 10px) var(--space-12, 12px);
+    }
+
+    .submit-button {
+        width: 100%;
+        max-width: 100%;
+        padding: var(--space-14, 14px) var(--space-24, 24px);
+    }
+
+    .form-disclaimer {
+        font-size: var(--font-size-xs, 12px);
+    }
+}
+
+/* Tablets (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .modal {
+        width: 90%;
+        max-width: 500px;
+        padding: var(--space-24, 24px);
+    }
+
+    .submit-button {
+        min-width: 150px;
+    }
+}
+
+/* Desktop (769px and above) */
+@media (min-width: 769px) {
+    .modal {
+        width: 85%;
+        max-width: 580px;
+        padding: var(--space-32, 32px);
+    }
+
+    .form {
+        gap: var(--space-20, 20px);
+    }
+}
+
+/* Large desktop (1200px and above) */
+@media (min-width: 1200px) {
+    .modal {
+        max-width: 600px;
+    }
+}
+
+/* Modal backdrop responsive */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--space-16, 16px);
+    overflow-y: auto;
+}
+
+/* Ensure modal is scrollable on small screens */
+@media (max-height: 600px) {
+    .modal-backdrop {
+        align-items: flex-start;
+        padding-top: var(--space-20, 20px);
+        padding-bottom: var(--space-20, 20px);
+    }
+}
