@@ -217,7 +217,12 @@ class SVGCacheManager {
 
     optimizeSVG(svgContent) {
         // Remove comments and unnecessary whitespace
-        let optimized = svgContent.replace(/<!--[\s\S]*?-->/g, "");
+        let previous;
+        let optimized = svgContent;
+        do {
+            previous = optimized;
+            optimized = optimized.replace(/<!--[\s\S]*?-->/g, "");
+        } while (optimized !== previous);
         optimized = optimized.replace(/>\s+</g, "><");
         return optimized;
     }
