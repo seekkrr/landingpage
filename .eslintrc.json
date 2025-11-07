@@ -37,9 +37,9 @@
       {
         "allow": [
           "warn",
-          "error",
-          "log"
+          "error"
         ]
+
       }
     ],
     "no-unused-vars": [
