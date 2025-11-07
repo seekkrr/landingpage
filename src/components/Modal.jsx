@@ -1,5 +1,6 @@
 import React from 'react';
-import cancelIcon from './assets/cancel.svg';
+import cancelIcon from '../assets/cancel.svg';
+import PropTypes from 'prop-types';
 
 /**
  * Modal Component
@@ -9,7 +10,7 @@ import cancelIcon from './assets/cancel.svg';
  * @param {function} onClose - Callback when modal should close
  * @param {ReactNode} children - Modal content
  */
-export default function Modal({ open, onClose, children }) {
+const Modal = ({ open, onClose, children }) => {
   // Handle escape key press
   React.useEffect(() => {
     if (!open) return;
@@ -59,3 +60,11 @@ export default function Modal({ open, onClose, children }) {
     </div>
   );
 }
+
+Modal.propTypes = {
+  open: PropTypes.bool,
+  onClose: PropTypes.func,
+  children: PropTypes.node
+};
+
+export default Modal;
