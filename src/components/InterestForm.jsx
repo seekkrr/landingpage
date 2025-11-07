@@ -155,8 +155,8 @@ const InterestForm = ( {setOpen, setSubmitted, errors, setErrors} ) => {
                 try {
                     const body = await res.json();
                     if (body && body.message) msg = body.message;
-                } catch (_) {
-                    // Ignore JSON parsing error, fallback to default message
+                } catch (parsingError) {
+                    console.error('Failed to parse error response:', parsingError);
                 }
                 alert(msg);
             }
