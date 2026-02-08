@@ -136,7 +136,7 @@ const InterestForm = ( {setOpen, setSubmitted, errors, setErrors} ) => {
                 phone: normalizePhone(form.phone),
             };
             const res = await fetch(
-                new URL("/api/interest/", API || undefined),
+                new URL("/api/interest", API || undefined),
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
